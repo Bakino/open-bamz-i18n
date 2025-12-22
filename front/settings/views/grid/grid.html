@@ -1,0 +1,92 @@
+<div class="h-100 d-flex flex-column">
+  <div id="iy79" z-show-if="langs.length > 0">
+    <div class="d-flex mb-2">
+      <div id="i8rn" z-show-if="mode=='view'">
+        <button
+          type="button"
+          id="ik3v9"
+          z-on-click='view.analyzeFiles()'
+          class="btn btn-primary"
+        >
+          <span>tr(Analyse application files)</span>
+        </button>
+        <button
+          type="button"
+          id="ik3v9"
+          z-on-click='view.changeMode("edit")'
+          class="btn btn-primary"
+        >
+          <span>tr(Modify)</span>
+        </button>
+        <button
+          type="button"
+          z-on-click="view.exportExcel()"
+          id="i6gb5"
+          class="btn ms-2 btn-outline-primary"
+        >
+          <span>tr(Export XLS)</span>
+        </button>
+      </div>
+      <div id="i18ab" z-show-if="mode=='edit'">
+        <button
+          type="button"
+          id="i3ex9"
+          z-on-click='view.changeMode("view")'
+          class="btn btn-outline-secondary me-2"
+        >
+          <span>tr(Cancel)</span>
+        </button>
+        <button
+          type="button"
+          id="ig4zi"
+          z-on-click="view.save()"
+          class="btn btn-success"
+        >
+          <span>tr(Save)</span>
+        </button>
+        <button
+          type="button"
+          z-on-click="view.importExcel()"
+          id="izbov"
+          class="btn ms-2 btn-outline-primary"
+        >
+          <span>tr(Import XLS)</span>
+        </button>
+      </div>
+      <div id="i41nt" z-show-if="mode=='edit'" class="ms-auto">
+        <button
+          type="button"
+          id="isszp"
+          z-on-click="view.addLine()"
+          class="btn btn-primary"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+            icon-filter="plus"
+            id="im6vr"
+            class="bi bi-plus-circle"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+            ></path>
+            <path
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+            ></path>
+          </svg>
+          <span id="ifdux" class="ms-1">tr(Add line)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="i8ke8" z-show-if="langs.length > 0" class="flex-grow-1">
+    <div id="grid" class="h-100"></div>
+  </div>
+  <div id="i0819" z-show-if="langs.length === 0" class="flex-grow-1">
+    <div>tr(No lang defined yet)</div>
+    <a href="#/new-lang">tr(Add a lang)</a>
+  </div>
+</div>

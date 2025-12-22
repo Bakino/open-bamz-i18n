@@ -1,0 +1,65 @@
+<div></div>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6 col-xxl-6 p-3 border rounded bg-light-subtle">
+      <div class="row">
+        <div class="col-12"><h3>tr(Add a new lang)</h3></div>
+        <div class="col-12">
+          <div id="il2aa" class="mb-3">
+            <label for="lang" id="ipidl" class="form-label">
+              tr(Choose a lang)
+            </label>
+            <select
+              type="text"
+              id="lang"
+              z-bind="langCode"
+              class="form-control form-select"
+            > 
+              <option>tr(Choose a lang)</option>
+              <option z-bind="l of allLangs" value="${l.lang}">
+                ${l.lang} ${l.localName} (${l.englishName} - ${l.countryName})
+              </option>
+            </select>
+          </div>
+        </div>
+        <div id="i073g" z-show-if="chosenLang" class="col-12">
+          <ul class="list-group">
+            <li id="i2tio" class="list-group-item fw-bold fs-5">
+              <span z-class="fi fi-${chosenLang?.country} fis"></span>
+              ${chosenLang.lang}
+            </li>
+            <li id="iih3h" class="list-group-item">
+              ${chosenLang.localName} (${chosenLang.englishName} -
+              ${chosenLang.countryName})
+            </li>
+          </ul>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              type="checkbox"
+              value=""
+              id="myCheckbox"
+              z-bind="isDefault"
+              class="form-check-input"
+            />
+            <label for="myCheckbox" id="icttz" class="form-check-label">
+              tr(Use as default lang)
+            </label>
+          </div>
+        </div>
+        <div id="i24bi" class="col-12 mt-2">
+          <button
+            type="button"
+            id="iydeh"
+            z-on-click="view.addLang()"
+            disabled="${!chosenLang}"
+            class="btn btn-primary w-100"
+          >
+            <span id="i7qqi">tr(Add new lang)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="sidebar-container">
+  <div id="sidebar" class="sidebar text-bg-dark">
+    <div id="toggleBtn" class="toggle-btn">←</div>
+    <div class="sidebar-content pt-3">
+      <a
+        href="#/"
+        id="iymsh"
+        z-link-type="inner"
+        z-route="/"
+        class="link-light link-underline link-underline-opacity-0"
+      >
+        <h4 class="mt-2 d-flex text-white align-items-baseline">
+          <img src="./logo_white.svg" class="me-xxl-2 ms-xxl-1" />
+          <span id="i3mt3">tr(Translation)</span>
+        </h4>
+      </a>
+      <div id="file-tree">
+        <ul id="i3fni">
+          <li z-bind="lang of langs" id="i3ml8" class="file">
+            <a
+              href="#/edit-lang/${lang.lang}"
+              id="iymsh-2"
+              z-link-type="inner"
+              z-route="#/edit-lang/:lang"
+              class="link-light link-underline link-underline-opacity-0"
+            >
+              <div id="iq20k">
+                <span z-class="fi fi-${lang.country} fis"></span>
+                ${lang.lang}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  icon-filter="check"
+                  id="i5yqr"
+                  z-show-if="lang.is_default"
+                  class="bi bi-check-circle-fill"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                  ></path>
+                </svg>
+              </div>
+              <div id="if8lt" class="ms-4">
+                <small><small>${lang.description}</small></small>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a
+        id="ih3f7-2"
+        href="#/new-lang"
+        class="btn btn-sm mb-2 btn-primary w-100"
+      >
+        <span>tr(Add a lang)</span>
+      </a>
+    </div>
+  </div>
+</div>
+<div
+  id="mainContent"
+  class="main-content pt-1 pb-1 flex-grow-1 d-flex flex-column h-100 bg-light"
+>
+  <z-sub-view class="flex-grow-1"></z-sub-view>
+</div>

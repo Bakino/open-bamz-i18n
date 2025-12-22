@@ -1,0 +1,56 @@
+<div></div>
+<div class="container-fluid">
+  <form>
+    <div class="row">
+      <div class="col-12">
+        <div id="idwt6" class="mb-3">
+          <label for="key" id="ifsvk" class="form-label">tr(Key)</label>
+          <input
+            type="text"
+            id="key"
+            z-bind="line.key"
+            readonly="${mode=='edit'}"
+            required=""
+            z-class="${mode=='edit'?'form-control-plaintext':''}"
+            class="form-control"
+          /> 
+        </div>
+      </div>
+      <div id="ilcdi" z-bind="translation of translations" class="col-12">
+        <div class="mb-3">
+          <label for="formInput1" class="form-label">${translation.lang}</label>
+          <textarea
+            type="text"
+            id="formInput1"
+            z-bind="translation.translation"
+            class="form-control"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex">
+          <div>
+            <button
+              type="button"
+              id="i3hku"
+              z-on-click="view.closePopup()"
+              class="btn btn-outline-secondary"
+            >
+              <span>tr(Cancel)</span>
+            </button>
+          </div>
+          <div class="ms-auto">
+            <button
+              type="button"
+              z-on-click="view.validate()"
+              id="iylzx"
+              class="btn btn-success"
+            >
+              <span>tr(Validate)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+//Script goes here
+
+view.loader = async ()=>{
+    const langs = await dbApi.db.i18n.lang.search();
+    return { langs } ;
+}
+
+
+function initSidebar(){
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const mainContent = document.getElementById('mainContent');
+
+    // Par défaut, ouvert
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('closed');
+        mainContent.classList.toggle('sidebar-closed');
+        
+        // Changement de la flèche
+        toggleBtn.textContent = sidebar.classList.contains('closed') ? '→' : '←';
+    });
+}
+
+view.displayed = async ()=>{
+    initSidebar() ;
+    document.addEventListener("changeView", (/** @type CustomEvent */ev)=>{
+        view.data.currentView = ev.detail ;
+    })
+    view.addEventListener("langsChanged", ()=>{
+        view.refresh() ;
+    }) ;
+};
+

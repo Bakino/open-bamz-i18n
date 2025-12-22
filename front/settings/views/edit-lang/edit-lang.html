@@ -1,0 +1,119 @@
+<div id="i8r9" class="container">
+  <div class="row justify-content-center mt-5">
+    <div
+      id="iizf"
+      z-show-if="mode!='edit'"
+      class="col-12 col-lg-6 col-xxl-6 p-3 border rounded bg-light-subtle"
+    > 
+      <div class="row">
+        <div id="i073g" class="col-12">
+          <ul class="list-group">
+            <li id="i2tio" class="list-group-item fw-bold fs-5">
+              <div id="inbqo" class="d-flex">
+                <div id="itydog">
+                  <span z-class="fi fi-${lang.country} fis"></span>
+                </div>
+                <div id="ityog" class="ms-2">${lang.lang}</div>
+                <div id="iesd3" class="ms-auto text-success">
+                  <span id="ib0z1" z-show-if="lang.is_default">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      icon-filter="check"
+                      id="i5yqr"
+                      class="bi bi-check-circle-fill"
+                    >
+                      <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                      ></path>
+                    </svg>
+                    &nbsp;tr(Is default)
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li id="iih3h" class="list-group-item">${lang.description}</li>
+          </ul>
+        </div>
+        <div class="col-12">
+          <button
+            type="button"
+            id="i54e3"
+            z-on-click="view.data.mode='edit'"
+            class="btn w-100 btn-outline-primary mt-2"
+          >
+            <span>tr(Modify)</span>
+          </button>
+        </div>
+        <div id="i24bi" class="col-12 mt-2">
+          <button
+            type="button"
+            id="iydeh"
+            z-on-click="view.removeLang()"
+            class="btn btn-danger w-100"
+          >
+            <span id="i7qqi">tr(Remove lang)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 col-xxl-12"></div>
+    <div
+      id="i1xwt"
+      z-show-if="mode==='edit'"
+      class="col-12 col-lg-6 col-xxl-6 p-3 border rounded bg-light-subtle"
+    >
+      <form id="ihdy4">
+        <div id="iu6d3" class="mb-3">
+          <label for="formInput1" id="igk0s" class="form-label">
+            tr(Description)
+          </label>
+          <input
+            type="text"
+            id="formInput1"
+            z-bind="lang.description"
+            required=""
+            class="form-control"
+          />
+        </div>
+        <div id="if1qs" class="form-check">
+          <input
+            type="checkbox"
+            value=""
+            id="myCheckbox"
+            z-bind="lang.is_default"
+            class="form-check-input"
+          />
+          <label for="myCheckbox" id="iza2g" class="form-check-label">
+            tr(Is default)
+          </label>
+        </div>
+        <div id="iwbff" class="d-flex">
+          <div id="igk8k">
+            <button
+              type="button"
+              id="im1l5"
+              z-on-click="view.data.mode='view'"
+              class="btn btn-outline-secondary"
+            >
+              <span id="ictcj">tr(Cancel)</span>
+            </button>
+          </div>
+          <div id="i61h8" class="ms-auto">
+            <button
+              type="button"
+              id="i1atk"
+              z-on-click="view.save()"
+              class="btn btn-success"
+            >
+              <span id="iz3mj">tr(Save)</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
