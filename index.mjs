@@ -180,7 +180,7 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
         return _CACHE[appName];
     }
 
-    app.use(["/app/*any", "/plugin/*any"], async (req, res, next) => {
+    app.use(async (req, res, next) => {
         let appName = req.appName ;
         if(appName && appName !== process.env.DB_NAME){
             if(await hasCurrentPlugin(appName)){
@@ -415,7 +415,7 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
         if(pluginsData?.["open-bamz-viewz"]?.pluginSlots?.viewzExtensions){
             pluginsData?.["open-bamz-viewz"]?.pluginSlots?.viewzExtensions.push( {
                 plugin: "open-bamz-i18n",
-                extensionPath: "/plugin/open-bamz-i18n/viewz-i18n.mjs",
+                extensionPath: "/plugin/open-bamz-i18n/lib/viewz-i18n.mjs",
                 "d.ts": `
                 declare const i18n: i18n;
                 declare const tr: TFunction<
