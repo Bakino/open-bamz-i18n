@@ -378,22 +378,29 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
             }
         }
 
-        if(pluginsData?.["open-bamz-sources-export"]?.pluginSlots?.urlsToDownload){
+        if(pluginsData?.["open-bamz-packaging"]?.pluginSlots?.urlsToDownload){
             //always store dev that is the default lang
-            pluginsData?.["open-bamz-sources-export"]?.pluginSlots?.urlsToDownload.push({
+            pluginsData?.["open-bamz-packaging"]?.pluginSlots?.urlsToDownload.push({
                 url: `/open-bamz-i18n/locales/dev.json`,
                 dest: `open-bamz-i18n/locales/dev.json`
+            });
+            pluginsData?.["open-bamz-packaging"]?.pluginSlots?.urlToReplace.push({
+                file: {filePath: "open-bamz-i18n/lib/i18n.mjs", baseUrl: "/plugin/open-bamz-i18n/lib/i18n.mjs" },
+                urls: [{
+                    url: "/open-bamz-i18n/locales/{{lng}}.json",
+                    dest: `/static/open-bamz-i18n/locales/{{lng}}.json`,
+                }]
             });
 
             let resultLangs = await runQuery({database: appName}, "SELECT * FROM i18n.lang");
             for(let lang of resultLangs.rows){
                 //for each lang, store the full lang (xx-XX) and lang only (xx)
-                pluginsData?.["open-bamz-sources-export"]?.pluginSlots?.urlsToDownload.push({
+                pluginsData?.["open-bamz-packaging"]?.pluginSlots?.urlsToDownload.push({
                     url: `/open-bamz-i18n/locales/${lang.lang}.json`,
                     dest: `open-bamz-i18n/locales/${lang.lang}.json`
                 });
                 if(lang.lang.length>2){
-                    pluginsData?.["open-bamz-sources-export"]?.pluginSlots?.urlsToDownload.push({
+                    pluginsData?.["open-bamz-packaging"]?.pluginSlots?.urlsToDownload.push({
                         url: `/open-bamz-i18n/locales/${lang.lang.substring(0,2)}.json`,
                         dest: `open-bamz-i18n/locales/${lang.lang.substring(0,2)}.json`
                     });
