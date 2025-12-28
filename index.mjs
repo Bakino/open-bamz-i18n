@@ -437,7 +437,7 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
         if(pluginsData?.["open-bamz-database"]?.pluginSlots?.dbFieldsExtensions){
             pluginsData?.["open-bamz-database"]?.pluginSlots?.dbFieldsExtensions.push( {
                 plugin: "open-bamz-i18n",
-                extensionPath: "/plugin/open-bamz-i18n/db-components-i18n.mjs",
+                extensionPath: "/plugin/open-bamz-i18n/lib/db-components-i18n.mjs",
             })
         }
     })
