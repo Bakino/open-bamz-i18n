@@ -100,6 +100,20 @@ FOR EACH ROW EXECUTE FUNCTION i18n.set_single_default_lang()`);
     LANGUAGE "plv8"`);
 
 
+    await client.query(`drop function if exists i18n.tr`) ;
+    await client.query(`create or replace function i18n.tr(
+        key text, lang text
+      )
+      returns text as
+      $$
+
+          const res = plv8.execute("SELECT * FROM i18n.translation WHERE key = $1 AND lang = $2", [key, lang])
+
+          return res[0]?.translation??key ;
+      $$
+    LANGUAGE "plv8"`);
+
+
     await client.query(`create or replace function i18n.remove_keys(
         keys text[], file_path text
       )
