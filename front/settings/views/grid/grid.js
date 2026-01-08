@@ -193,12 +193,16 @@ view.save = async ()=>{
         for(let line of view.data.lines){
             for(let lang of view.data.langs){
                 let existingTranslation = existing.translations.find(t=>t.key === line.key && t.lang === lang.lang) ;
-                if(existingTranslation){
-                    if(existingTranslation.translation !== line[lang.lang]){
-                        await transac.db.i18n.translation.updateByKeyAndLang(line.key, lang.lang, {translation: line[lang.lang||""]})
+                if(line[lang.lang]){
+                    if(existingTranslation){
+                        if(existingTranslation.translation !== line[lang.lang]){
+                            await transac.db.i18n.translation.updateByKeyAndLang(line.key, lang.lang, {translation: line[lang.lang||""]})
+                        }
+                    }else{
+                        await transac.db.i18n.translation.create({ key: line.key, lang: lang.lang, translation: line[lang.lang||""]}) ;
                     }
-                }else{
-                    await transac.db.i18n.translation.create({ key: line.key, lang: lang.lang, translation: line[lang.lang||""]}) ;
+                }else if(existingTranslation){
+                    await transac.db.i18n.translation.deleteByKeyAndLang(line.key, lang.lang) ;
                 }
             }
         }
