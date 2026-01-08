@@ -1,2 +1,2 @@
 
-declare const dbApi: any;
+declare const dbApi: GraphqlClient;
