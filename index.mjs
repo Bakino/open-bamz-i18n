@@ -355,8 +355,10 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
             if(await hasCurrentPlugin(appName)){
                 if(relativePath.toLowerCase().endsWith(".html") || relativePath.toLowerCase().endsWith(".js") 
                     || relativePath.toLowerCase().endsWith(".mjs")|| relativePath.toLowerCase().endsWith(".jsx")){
-                    const translationKeys = extractTranslationStrings(data.toString("utf8")) ;
-                    await updateKeysFromSource({filePath: relativePath, translationKeys, appName}) ;
+                    if(data && data.toString){
+                        const translationKeys = extractTranslationStrings(data.toString("utf8")) ;
+                        await updateKeysFromSource({filePath: relativePath, translationKeys, appName}) ;
+                    }
                 }
             }
         }catch(err){
