@@ -6,6 +6,10 @@ export default {
         tr: i18n.t,
         i18n: i18n,
     },
+    extends: {
+        tr: i18n.t,
+        i18n: i18n,
+    },
     htmlProcessors: [
         (el)=>{
             localizeDOM(el, i18n) ;
