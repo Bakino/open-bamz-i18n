@@ -366,7 +366,7 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
         }
     });
     
-    loadPluginData(async ({pluginsData, appName})=>{
+    loadPluginData(async ({pluginsData, appName, client})=>{
         if(pluginsData?.["open-bamz-viewz"]?.pluginSlots?.htmlProcessors){
             pluginsData?.["open-bamz-viewz"]?.pluginSlots?.htmlProcessors.push(({el, req})=>{
                 localizeDOM(el, {
@@ -380,7 +380,7 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
                 url: `/open-bamz-i18n/locales/dev.json`
             });
 
-            let resultLangs = await runQuery({database: appName}, "SELECT * FROM i18n.lang");
+            let resultLangs = await client.query("SELECT * FROM i18n.lang");
             for(let lang of resultLangs.rows){
                 //for each lang, store the full lang (xx-XX) and lang only (xx)
                 pluginsData?.["open-bamz-pwa"]?.pluginSlots?.urlsToCache.push({
@@ -408,7 +408,7 @@ export const initPlugin = async ({ app, graphql, hasCurrentPlugin, loadPluginDat
                 }]
             });
 
-            let resultLangs = await runQuery({database: appName}, "SELECT * FROM i18n.lang");
+            let resultLangs = await client.query("SELECT * FROM i18n.lang");
             for(let lang of resultLangs.rows){
                 //for each lang, store the full lang (xx-XX) and lang only (xx)
                 pluginsData?.["open-bamz-packaging"]?.pluginSlots?.urlsToDownload.push({
