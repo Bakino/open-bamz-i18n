@@ -30,6 +30,8 @@ export let waitForI18nReady = new Promise((resolve, reject)=>{
             });
         
             console.log("i18n loaded")
+            window.dispatchEvent(new CustomEvent("openbamz.plugin.i18n.loaded"));
+
         
         
             // if(window.VIEWZ_HTML_PROCESSORS){
